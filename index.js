@@ -8,15 +8,23 @@ tweetBtn.addEventListener("click", function () {
 });
 
 document.addEventListener("click", function (e) {
-  console.log(e.target.dataset.like);
-
   if (e.target.dataset.like) {
     handleLikeClick(e.target.dataset.like);
   }
 });
 
-function handleLikeClick(tweetID) {
-  console.log(tweetID);
+function handleLikeClick(tweetId) {
+  const targetTweetObj = tweetsData.filter(function (tweet) {
+    return tweet.uuid === tweetId;
+  })[0];
+
+  if (targetTweetObj.isLiked) {
+    targetTweetObj.likes--;
+  } else {
+    targetTweetObj.likes++;
+  }
+  targetTweetObj.isLiked = !targetTweetObj.isLiked;
+  render();
 }
 
 function getFeedHtml() {
@@ -55,4 +63,4 @@ function render() {
   document.getElementById("feed").innerHTML = getFeedHtml();
 }
 
-console.log(render());
+render();
