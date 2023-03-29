@@ -125,4 +125,20 @@ button{
 /* utility */
 .hidden{
     display: none;
+    background-color: black;
+}
+
+/* .heading-tweet{
+    display: flex;
+    justify-content:end;
+    flex-direction: row;
+} */
+
+div .delete{
+    border: none;
+    background-color: white;
+    color: #1DA1F2;
+    font-size:small ;
+    width: 5px;
+
 }
