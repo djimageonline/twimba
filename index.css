@@ -1,8 +1,10 @@
+
+
 html, body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
-    background-color: #555;
+    background-color: #4e4e4e;
 }
 
 /* typography and icons */
@@ -25,6 +27,8 @@ i{
 .retweeted {
   color: limegreen;
 }
+
+
 
 /* layout */
 
