@@ -14,6 +14,7 @@ document.addEventListener("click", function (e) {
     handleDeleteTweet(e.target.dataset.delete);
   } else if (e.target.id === "send-tweet") {
     handleSendBtnClick(e.target.dataset.send);
+    console.log(e);
   }
 });
 
@@ -68,7 +69,7 @@ function handleTweetBtnClick() {
     tweetInput.value = "";
   }
 }
-// needs refactor unexpected error here needs to bixed
+
 function handleSendBtnClick(sendId) {
   const replyInput = document.getElementById("reply-input");
   const targetSendReplyObj = tweetsData.filter(function (reply) {
@@ -76,10 +77,12 @@ function handleSendBtnClick(sendId) {
   })[0];
 
   let indexOfObject = tweetsData.indexOf(targetSendReplyObj);
-  console.log(indexOfObject);
+
+  console.log(targetSendReplyObj);
+  console.log(replyInput.value);
 
   if (replyInput.value !== "") {
-    tweetsData.indexOfObject.replies.push({
+    tweetsData[indexOfObject].replies.unshift({
       handle: `@johnnydev`,
       profilePic: `images/yay.png`,
       tweetText: replyInput.value,
@@ -120,7 +123,14 @@ function getFeedHtml() {
 
     if (tweet.replies.length > 0) {
       tweet.replies.forEach(function (reply) {
-        repliesHtml += `<div class="tweet-reply">
+        newReply = `
+        <div class="reply-container">
+          <textarea placeholder="reply" id="reply-input"></textarea>
+          <button id="send-tweet" "class="send-tweet" data-send="${tweet.uuid}">tweet</button>
+        </div>
+      `;
+        repliesHtml += `
+        <div class="tweet-reply">
               <div class="tweet-inner">
                 <img src="${reply.profilePic}" class="profile-pic">
                   <div>
@@ -130,7 +140,9 @@ function getFeedHtml() {
               </div>
           </div>`;
       });
-    } else if (tweet.replies.length === 0) {
+    }
+
+    if (tweet.replies.length === 0) {
       newReply = `
         <div class="reply-container">
           <textarea placeholder="reply" id="reply-input"></textarea>
