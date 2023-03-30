@@ -10,6 +10,10 @@ document.addEventListener("click", function (e) {
     handleReplyClick(e.target.dataset.reply);
   } else if (e.target.id === "tweet-btn") {
     handleTweetBtnClick();
+  } else if (e.target.dataset.delete) {
+    handleDeleteTweet(e.target.dataset.delete);
+  } else if (e.target.dataset.send) {
+    handleSendBtnClick(e.target.dataset.send);
   }
 });
 
@@ -50,8 +54,8 @@ function handleTweetBtnClick() {
 
   if (tweetInput.value !== "") {
     tweetsData.unshift({
-      handle: `@Scrimba`,
-      profilePic: `images/scrimbalogo.png`,
+      handle: `@johnnydev`,
+      profilePic: `images/yay.png`,
       likes: 0,
       retweets: 0,
       tweetText: tweetInput.value,
@@ -63,6 +67,33 @@ function handleTweetBtnClick() {
     render();
     tweetInput.value = "";
   }
+}
+
+function handleSendBtnClick(sendId) {
+  console.log(sendId);
+  const replyText = document.getElementById("reply-txt");
+  console.log(replyText.value);
+  // needs to be fixed here
+  if (replyText.value !== "") {
+    tweetsData.replies.unshift({
+      handle: `@johnnydev`,
+      profilePic: `images/yay.png`,
+      tweetText: replyText.value,
+    });
+    render();
+    replyText.value = "";
+  }
+}
+
+function handleDeleteTweet(deleteTweetId) {
+  console.log(deleteTweetId);
+  const targetTweetObj = tweetsData.filter(function (tweet) {
+    return tweet.uuid === deleteTweetId;
+  })[0];
+  let indexOfObject = tweetsData.indexOf(targetTweetObj);
+  tweetsData.splice(indexOfObject, 1);
+
+  render();
 }
 
 function getFeedHtml() {
@@ -81,6 +112,7 @@ function getFeedHtml() {
     }
 
     let repliesHtml = "";
+    let newReply = "";
 
     if (tweet.replies.length > 0) {
       tweet.replies.forEach(function (reply) {
@@ -94,6 +126,13 @@ function getFeedHtml() {
               </div>
           </div>`;
       });
+    } else if (tweet.replies.length === 0) {
+      newReply = `
+        <div class="reply-container">
+          <textarea class="reply-txt" placeholder="reply" id="tweet-input"></textarea>
+          <button class="send-tweet" data-send="${tweet.uuid}">tweet</button>
+        </div>
+      `;
     }
 
     feedHtml += `
@@ -102,7 +141,7 @@ function getFeedHtml() {
             <img src="${tweet.profilePic}" class="profile-pic">
             <div class="tweet-container">
               <p class="handle">${tweet.handle}</p>
-              <button class="delete">X</button>
+              <button class="delete" data-delete="${tweet.uuid}">X</button>
               <p class="tweet-text">${tweet.tweetText}</p>
               <div class="tweet-details">
                   <span class="tweet-detail">
@@ -122,6 +161,7 @@ function getFeedHtml() {
         </div>
         <div class="hidden" id="replies-${tweet.uuid}">
         ${repliesHtml}
+        ${newReply}
     </div>   
     </div>`;
   });

@@ -7,7 +7,7 @@ html, body {
 /* typography and icons */
 
 h1{
-    color: #0F8CDF;
+    color: #14be47;
     margin-bottom: 10px;
     font-size: 20px;
 }
@@ -55,8 +55,36 @@ textarea{
     resize: none;
 }
 
+.reply-txt {
+    border: none;
+    padding: 10px;
+    margin: 10px 0 25px 0;
+    height: 50px;
+    width: 100%;
+    font-size: 16px;
+    line-height: 30px;
+    resize: none;
+}
+.reply-container{
+    position: relative;
+}
+
+.send-tweet {
+    border: none;
+    background-color: #14be47;
+    color: white;
+    font-size:small ;
+    width: 20%;
+    padding: 3;
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+}
+
+
+
 button{
-    background-color: #1DA1F2;
+    background-color: #14be47;
     border: none;
     color: white;
     padding: 10px 19px;
@@ -128,17 +156,18 @@ button{
     background-color: black;
 }
 
-/* .heading-tweet{
-    display: flex;
-    justify-content:end;
-    flex-direction: row;
-} */
+.tweet-container{
+    position: relative;
+}
 
-div .delete{
+.delete{
     border: none;
     background-color: white;
-    color: #1DA1F2;
+    color: #14be47;
     font-size:small ;
-    width: 5px;
-
+    width: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0;
 }
