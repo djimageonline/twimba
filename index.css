@@ -55,7 +55,7 @@ textarea{
     resize: none;
 }
 
-#reply-input{
+.reply-input{
     border: none;
     padding: 10px;
     margin: 10px 0 25px 0;

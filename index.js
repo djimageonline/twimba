@@ -14,7 +14,6 @@ document.addEventListener("click", function (e) {
     handleDeleteTweet(e.target.dataset.delete);
   } else if (e.target.id === "send-tweet") {
     handleSendBtnClick(e.target.dataset.send);
-    console.log(e);
   }
 });
 
@@ -79,9 +78,6 @@ function handleSendBtnClick(sendId) {
 
   let indexOfObject = tweetsData.indexOf(targetSendReplyObj);
 
-  console.log(targetSendReplyObj);
-  console.log(replyInput.value);
-
   if (replyInput.value !== "") {
     tweetsData[indexOfObject].replies.unshift({
       handle: `@johnnydev`,
@@ -94,7 +90,6 @@ function handleSendBtnClick(sendId) {
 }
 
 function handleDeleteTweet(deleteTweetId) {
-  console.log(deleteTweetId);
   const targetTweetObj = tweetsData.filter(function (tweet) {
     return tweet.uuid === deleteTweetId;
   })[0];
@@ -126,7 +121,7 @@ function getFeedHtml() {
       tweet.replies.forEach(function (reply) {
         newReply = `
         <div class="reply-container">
-          <textarea placeholder="reply" id="reply-input-${tweet.uuid}"></textarea>
+          <textarea placeholder="reply" id="reply-input-${tweet.uuid}" class="reply-input"></textarea>
           <button id="send-tweet" "class="send-tweet" data-send="${tweet.uuid}">tweet</button>
         </div>
       `;
@@ -146,7 +141,7 @@ function getFeedHtml() {
     if (tweet.replies.length === 0) {
       newReply = `
         <div class="reply-container">
-          <textarea placeholder="reply" id="reply-input-${tweet.uuid}"></textarea>
+          <textarea placeholder="reply" id="reply-input-${tweet.uuid}" class="reply-input"></textarea>
           <button id="send-tweet" "class="send-tweet" data-send="${tweet.uuid}">tweet</button>
         </div>
       `;
