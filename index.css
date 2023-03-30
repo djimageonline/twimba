@@ -2,12 +2,13 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
+    background-color: #555;
 }
 
 /* typography and icons */
 
 h1{
-    color: #14be47;
+    color: #4114be;
     margin-bottom: 10px;
     font-size: 20px;
 }
@@ -30,6 +31,8 @@ i{
 main, header{
     width: 290px;
     margin: 0 auto;
+    background-color: white;
+    padding: 30px;
 }
 
 header{
@@ -71,10 +74,10 @@ textarea{
 
 #send-tweet {
     border: none;
-    background-color: #14be47;
+    background-color: #4114be;
     color: white;
     font-size:small ;
-    width: 20%;
+    width: 25%;
     padding: 3;
     position: absolute;
     bottom: 0;
@@ -84,7 +87,7 @@ textarea{
 
 
 button{
-    background-color: #14be47;
+    background-color: #4114be;
     border: none;
     color: white;
     padding: 10px 19px;
@@ -149,7 +152,7 @@ button{
 .delete{
     border: none;
     background-color: white;
-    color: #14be47;
+    color: #4114be;
     font-size:small ;
     width: 10px;
     position: absolute;

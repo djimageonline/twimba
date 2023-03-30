@@ -122,7 +122,7 @@ function getFeedHtml() {
         newReply = `
         <div class="reply-container">
           <textarea placeholder="reply" id="reply-input-${tweet.uuid}" class="reply-input"></textarea>
-          <button id="send-tweet" "class="send-tweet" data-send="${tweet.uuid}">tweet</button>
+          <button id="send-tweet" "class="send-tweet" data-send="${tweet.uuid}">chaTweet</button>
         </div>
       `;
         repliesHtml += `
@@ -142,7 +142,7 @@ function getFeedHtml() {
       newReply = `
         <div class="reply-container">
           <textarea placeholder="reply" id="reply-input-${tweet.uuid}" class="reply-input"></textarea>
-          <button id="send-tweet" "class="send-tweet" data-send="${tweet.uuid}">tweet</button>
+          <button id="send-tweet" "class="send-tweet" data-send="${tweet.uuid}">chaTweet</button>
         </div>
       `;
     }
