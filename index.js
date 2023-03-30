@@ -12,7 +12,7 @@ document.addEventListener("click", function (e) {
     handleTweetBtnClick();
   } else if (e.target.dataset.delete) {
     handleDeleteTweet(e.target.dataset.delete);
-  } else if (e.target.dataset.send) {
+  } else if (e.target.id === "send-tweet") {
     handleSendBtnClick(e.target.dataset.send);
   }
 });
@@ -68,20 +68,24 @@ function handleTweetBtnClick() {
     tweetInput.value = "";
   }
 }
-
+// needs refactor unexpected error here needs to bixed
 function handleSendBtnClick(sendId) {
-  console.log(sendId);
-  const replyText = document.getElementById("reply-txt");
-  console.log(replyText.value);
-  // needs to be fixed here
-  if (replyText.value !== "") {
-    tweetsData.replies.unshift({
+  const replyInput = document.getElementById("reply-input");
+  const targetSendReplyObj = tweetsData.filter(function (reply) {
+    return reply.uuid === sendId;
+  })[0];
+
+  let indexOfObject = tweetsData.indexOf(targetSendReplyObj);
+  console.log(indexOfObject);
+
+  if (replyInput.value !== "") {
+    tweetsData.indexOfObject.replies.push({
       handle: `@johnnydev`,
       profilePic: `images/yay.png`,
-      tweetText: replyText.value,
+      tweetText: replyInput.value,
     });
     render();
-    replyText.value = "";
+    replyInput.value = "";
   }
 }
 
@@ -129,8 +133,8 @@ function getFeedHtml() {
     } else if (tweet.replies.length === 0) {
       newReply = `
         <div class="reply-container">
-          <textarea class="reply-txt" placeholder="reply" id="tweet-input"></textarea>
-          <button class="send-tweet" data-send="${tweet.uuid}">tweet</button>
+          <textarea placeholder="reply" id="reply-input"></textarea>
+          <button id="send-tweet" "class="send-tweet" data-send="${tweet.uuid}">tweet</button>
         </div>
       `;
     }

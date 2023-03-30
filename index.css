@@ -55,7 +55,7 @@ textarea{
     resize: none;
 }
 
-.reply-txt {
+#reply-input{
     border: none;
     padding: 10px;
     margin: 10px 0 25px 0;
@@ -69,7 +69,7 @@ textarea{
     position: relative;
 }
 
-.send-tweet {
+#send-tweet {
     border: none;
     background-color: #14be47;
     color: white;
@@ -142,20 +142,6 @@ button{
     line-height: 20px;
 }
 
-/* images */
-
-.profile-pic{
-    border: 1px solid lightgray;
-    border-radius: 50%;
-    width: 48px;
-}
-
-/* utility */
-.hidden{
-    display: none;
-    background-color: black;
-}
-
 .tweet-container{
     position: relative;
 }
@@ -170,4 +156,18 @@ button{
     top: 0;
     right: 0;
     padding: 0;
+}
+
+/* images */
+
+.profile-pic{
+    border: 1px solid lightgray;
+    border-radius: 50%;
+    width: 48px;
+}
+
+/* utility */
+.hidden{
+    display: none;
+    background-color: black;
 }
