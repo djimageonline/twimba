@@ -29,6 +29,17 @@ i{
 }
 
 
+@media (max-width: 400px ) {
+
+  i {
+    font-size: 16px;
+  }
+  
+  .tweet-details {
+    width: 180px;
+  }
+}
+
 
 /* layout */
 
@@ -81,8 +92,8 @@ textarea{
     background-color: #4114be;
     color: white;
     font-size:small ;
-    width: 25%;
-    padding: 3;
+    width: 35%;
+    padding: 3px;
     position: absolute;
     bottom: 0;
     right: 10px;
