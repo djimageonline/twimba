@@ -32,12 +32,12 @@ i{
 @media (max-width: 400px ) {
 
   i {
-    font-size: 16px;
+    font-size: 20px;
   }
   
-  .tweet-details {
-    width: 180px;
-  }
+  .tweet-detail {
+    margin-right: 30px;
+}
 }
 
 
