@@ -71,7 +71,8 @@ function handleTweetBtnClick() {
 }
 
 function handleSendBtnClick(sendId) {
-  const replyInput = document.getElementById("reply-input");
+  const replyInput = document.getElementById(`reply-input-${sendId}`);
+
   const targetSendReplyObj = tweetsData.filter(function (reply) {
     return reply.uuid === sendId;
   })[0];
@@ -125,7 +126,7 @@ function getFeedHtml() {
       tweet.replies.forEach(function (reply) {
         newReply = `
         <div class="reply-container">
-          <textarea placeholder="reply" id="reply-input"></textarea>
+          <textarea placeholder="reply" id="reply-input-${tweet.uuid}"></textarea>
           <button id="send-tweet" "class="send-tweet" data-send="${tweet.uuid}">tweet</button>
         </div>
       `;
@@ -145,7 +146,7 @@ function getFeedHtml() {
     if (tweet.replies.length === 0) {
       newReply = `
         <div class="reply-container">
-          <textarea placeholder="reply" id="reply-input"></textarea>
+          <textarea placeholder="reply" id="reply-input-${tweet.uuid}"></textarea>
           <button id="send-tweet" "class="send-tweet" data-send="${tweet.uuid}">tweet</button>
         </div>
       `;
